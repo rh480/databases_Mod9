@@ -46,6 +46,81 @@ def test_calculator_add(page, fastapi_server):
     assert page.inner_text('#result') == 'Result: 15'
 
 @pytest.mark.e2e
+def test_calculator_subtract(page, fastapi_server):
+    """
+    Test the subtraction functionality of the calculator.
+
+    This test simulates a user performing a subtraction operation using the calculator
+    on the frontend. It fills in two numbers, clicks the "Subtract" button, and verifies
+    that the result displayed is correct.
+    """
+    # Navigate the browser to the homepage URL of the FastAPI application.
+    page.goto('http://localhost:8000')
+
+    # Fill in the first number input field (with id 'a') with the value '10'.
+    page.fill('#a', '10')
+
+    # Fill in the second number input field (with id 'b') with the value '5'.
+    page.fill('#b', '5')
+
+    # Click the button that has the exact text "Subtract". This triggers the subtraction operation.
+    page.click('button:text("Subtract")')
+
+    # Use an assertion to check that the text within the result div (with id 'result') is exactly "Result: 5".
+    # This verifies that the subtraction operation was performed correctly and the result is displayed as expected.
+    assert page.inner_text('#result') == 'Result: 5'
+
+@pytest.mark.e2e
+def test_calculator_multiply(page, fastapi_server):
+    """
+    Test the multiplication functionality of the calculator.
+
+    This test simulates a user performing a multiplication operation using the calculator
+    on the frontend. It fills in two numbers, clicks the "Multiply" button, and verifies
+    that the result displayed is correct.
+    """
+    # Navigate the browser to the homepage URL of the FastAPI application.
+    page.goto('http://localhost:8000')
+
+    # Fill in the first number input field (with id 'a') with the value '10'.
+    page.fill('#a', '10')
+
+    # Fill in the second number input field (with id 'b') with the value '5'.
+    page.fill('#b', '5')
+
+    # Click the button that has the exact text "Multiply". This triggers the multiplication operation.
+    page.click('button:text("Multiply")')
+
+    # Use an assertion to check that the text within the result div (with id 'result') is exactly "Result: 50".
+    # This verifies that the multiplication operation was performed correctly and the result is displayed as expected.
+    assert page.inner_text('#result') == 'Result: 50'
+
+@pytest.mark.e2e
+def test_calculator_divide(page, fastapi_server):
+    """
+    Test the division functionality of the calculator.
+
+    This test simulates a user performing a division operation using the calculator
+    on the frontend. It fills in two numbers, clicks the "Divide" button, and verifies
+    that the result displayed is correct.
+    """
+    # Navigate the browser to the homepage URL of the FastAPI application.
+    page.goto('http://localhost:8000')
+
+    # Fill in the first number input field (with id 'a') with the value '10'.
+    page.fill('#a', '10')
+
+    # Fill in the second number input field (with id 'b') with the value '2'.
+    page.fill('#b', '2')
+
+    # Click the button that has the exact text "Divide". This triggers the division operation.
+    page.click('button:text("Divide")')
+
+    # Use an assertion to check that the text within the result div (with id 'result') is exactly "Result: 5".
+    # This verifies that the division operation was performed correctly and the result is displayed as expected.
+    assert page.inner_text('#result') == 'Result: 5'
+
+@pytest.mark.e2e
 def test_calculator_divide_by_zero(page, fastapi_server):
     """
     Test the divide by zero functionality of the calculator.
